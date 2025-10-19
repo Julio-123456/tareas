@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Notas</title>
+</head>
+<body>
+    <h2>Registro de Notas del Estudiante</h2>
+
+    <label>Nombre del estudiante:</label>
+    <input type="text" id="nombre"><br><br>
+
+    <label>Matemáticas:</label>
+    <input type="number" id="matematicas" step="0.1"><br>
+
+    <label>Lenguaje:</label>
+    <input type="number" id="lenguaje" step="0.1"><br>
+
+    <label>Ciencias:</label>
+    <input type="number" id="ciencias" step="0.1"><br>
+
+    <label>Sociales:</label>
+    <input type="number" id="sociales" step="0.1"><br><br>
+    <label>Inglés:</label>
+    <input type="number" id="ingles" step="0.1"><br><br>
+
+    <button onclick="guardarJSON()">Guardar en JSON</button>
+
+    <script>
+        function guardarJSON() {
+            const datos = {
+                nombre: document.getElementById('nombre').value,
+                matematicas: document.getElementById('matematicas').value,
+                lenguaje: document.getElementById('lenguaje').value,
+                ciencias: document.getElementById('ciencias').value,
+                sociales: document.getElementById('sociales').value,
+                ingles: document.getElementById("ingles").value,
+            };
+
+            const blob = new Blob([JSON.stringify(datos, null, 2)], { type: "application/json" });
+            const enlace = document.createElement("a");
+            enlace.href = URL.createObjectURL(blob);
+            enlace.download = "notas.json";
+            enlace.click();
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
